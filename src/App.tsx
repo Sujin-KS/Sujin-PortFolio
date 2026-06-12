@@ -14,7 +14,7 @@ function App() {
             <AuroraBackground />
 
             <Navbar />
-            <main>
+            <main className="main-content">
                 <section id="home"><Hero /></section>
                 <section id="about"><About /></section>
                 <section id="skills"><SkillsSection/></section>

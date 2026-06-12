@@ -56,9 +56,9 @@ void main() {
   float aurora = fbm(p1 * 1.5 + vec2(t * 0.2, t * -0.1));
   aurora += fbm(p1 * 3.0 - vec2(t * 0.1, t * 0.3)) * 0.5;
 
-  vec3 col1 = vec3(0.08, 0.02, 0.15);
-  vec3 col2 = vec3(0.4,  0.1,  0.8);
-  vec3 col3 = vec3(0.1,  0.4,  0.9);
+  vec3 col1 = vec3(0.15, 0.10, 0.26); // Lighter, softer dark purple-indigo base
+  vec3 col2 = vec3(0.45, 0.18, 0.85); // Brighter, softer purple
+  vec3 col3 = vec3(0.18, 0.48, 0.95); // Softer, cleaner blue
 
   float mask = smoothstep(0.3, 0.8, aurora);
   vec3 color = mix(col1, col2, mask);
@@ -68,7 +68,7 @@ void main() {
   float glow = smoothstep(0.8, 0.0, dist) * 0.15;
   color += col3 * glow;
 
-  color *= 1.2 - length(p) * 0.5;
+  color *= 1.15 - length(p) * 0.22; // Softer vignette for less dark corners
 
   gl_FragColor = vec4(color, 1.0);
 }`;
@@ -164,7 +164,7 @@ export default function AuroraBackground({children}: { children?: React.ReactNod
                 width: "100vw",
                 height: "100vh",
                 overflow: "hidden",
-                background: "#000",
+                background: "#0d0a18",
             }}
         >
             <canvas
